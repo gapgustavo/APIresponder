@@ -10,7 +10,8 @@ async def verify_webhook(request: Request):
     verify_token = request.query_params.get("hub.verify_token")
 
     if mode == "subscribe" and verify_token == "2021":
-        return challenge
+        print (str(challenge))
+        return str(challenge)
     else:
         return {"message": "Invalid verification request"}
 
