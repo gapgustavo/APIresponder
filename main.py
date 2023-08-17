@@ -10,10 +10,9 @@ async def verify_webhook(request: Request):
     verify_token = request.query_params.get("hub.verify_token")
 
     if mode == "subscribe" and verify_token == "2021":
-        return challenge
+        return {"hub.challenge": challenge}
     else:
         return {"message": "Invalid verification request"}
-
 
 @app.post("/instagram-message/")
 async def receive_instagram_message(data: dict):
