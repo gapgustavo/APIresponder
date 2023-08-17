@@ -14,7 +14,7 @@ async def messaging_webhook(request: Request):
     if mode and token:
         if mode == "subscribe" and token == VERIFY_TOKEN:
             print("WEBHOOK_VERIFIED")
-            return challenge
+            return challenge.json()
         else:
             raise HTTPException(status_code=403, detail="Forbidden")
     else:
