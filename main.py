@@ -5,7 +5,7 @@ app = FastAPI()
 
 VERIFY_TOKEN = "2021"
 
-@app.get("/")
+@app.get("/instagram-message")
 async def messaging_webhook(request: Request):
     mode = request.query_params.get("hub.mode")
     token = request.query_params.get("hub.verify_token")
@@ -20,7 +20,7 @@ async def messaging_webhook(request: Request):
     else:
         raise HTTPException(status_code=400, detail="Bad Request")
     
-@app.post("/instagram-message/")
+@app.post("/instagram-message")
 async def receive_instagram_message(data: dict):
     print (data)
     return {"status": 200}
